@@ -17,6 +17,7 @@ class Game {
         this.opponentShots = []; // Disparos del oponente
         this.xDown = null; //  Posición en la que el usuario ha tocado la pantalla
         this.paused = false; // Indica si el juego está pausado
+        this.score = 0; //Inicia la puntuación en cero
     }
 
     /**
@@ -89,7 +90,7 @@ class Game {
         if (this.opponent) {
             document.body.removeChild(this.opponent.image);
         }
-        this.opponent = new Opponent(this);
+        this.opponent = new Boss(this);
     }
 
     /**
@@ -207,8 +208,13 @@ class Game {
      */
     endGame () {
         this.ended = true;
+        //Modificado para que si el jugador gana la partida se muestra la imagen win.
+        if (this.opponent instanceof Boss && this.player.isAlive()) {
+            new Entity(this, this.width / 2, "auto", this.width / 4, this.height / 4, 0, YOU_WIN_PICTURE).render();
+        } else {
         let gameOver = new Entity(this, this.width / 2, "auto", this.width / 4, this.height / 4, 0, GAME_OVER_PICTURE)
         gameOver.render();
+        }
     }
 
     /**
@@ -253,5 +259,21 @@ class Game {
         this.opponentShots.forEach((shot) => {
             shot.render();
         });
+        this.drawInfo();
     }
+    /**
+     * Muestra la puntuación de cero del juego
+     */
+    increaseScore() {
+        this.score++;
+    }    
+
+    /**
+    * Actualiza el juego con valores de la puntuación y las vidas.
+    */
+    drawInfo() {
+        document.getElementById("scoreli").innerHTML = "Score: " + this.score;
+        document.getElementById("livesli").innerHTML = "Lives: " + this.player.getLives();
+    }
+    
 }

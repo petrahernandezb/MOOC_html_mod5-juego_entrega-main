@@ -47,9 +47,17 @@ class Player extends Character {
      */
     collide() {
         if (!this.dead) {
-            setTimeout(() => {
+            if (this.lives ===0) {
+               setTimeout(() => {
                 this.game.endGame();
-            }, 2000);
+            }, 2000); 
+            } else { 
+                this.lives--;
+                setTimeout(() =>{
+                    this.reborn();
+                }, 2000);
+            }
+            
             super.collide();
         }
     }
