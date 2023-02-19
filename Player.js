@@ -17,6 +17,7 @@ class Player extends Character {
             myImageDead = PLAYER_PICTURE_DEAD;
 
         super(game, width, height, x, y, speed, myImage, myImageDead);
+        this.lives = PLAYER_LIVES;
     }
 
     /**
@@ -61,4 +62,16 @@ class Player extends Character {
             super.collide();
         }
     }
+    reborn() {
+        this.image.src = this.myImage;
+        this.dead = false;
+    }
+    getLives() {
+        return this.lives;
+    }
+    isAlive() {
+        return !this.dead;
+    }
 }
+
+    

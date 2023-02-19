@@ -3,7 +3,7 @@
  */
 class Boss extends Opponent{
     /**
-     * @param game {Game} La instancia del juego al que pertenece el supervillano
+     * @param game {Game} La instancia del juego al que pertenece el supervillano.
      */
     constructor(game) {
         super(game);

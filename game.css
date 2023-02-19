@@ -1,5 +1,6 @@
-html {
-  overflow: hidden;
+body {
+	overflow: hidden;
+	margin: 0;
 }
 
 .Opponent {
@@ -8,20 +9,22 @@ html {
 }
 
 .paused .Opponent {
-	animation: none;
-	-webkit-animation: none;
+	/* animation: none;
+	-webkit-animation: none; */
+	animation-play-state: paused;
 }
 
-@-webkit-keyframes rotation {
+@keyframes rotation {
 	from {
-		transform: rotate(0deg);
-		-webkit-transform: rotate(0deg);
+	  transform: rotate(0deg);
+	  /* -webkit-transform: rotate(0deg); */
 	}
 	to {
-		transform: rotate(359deg);
-		-webkit-transform: rotate(359deg);
+	  transform: rotate(359deg);
+	  /* -webkit-transform: rotate(359deg); */
 	}
-}
+  }
+  
 
 .gamebutton {
 	border: none;
@@ -31,4 +34,16 @@ html {
 	outline: none;
 	font-family: monospace;
 	cursor: pointer;
+}
+ul {
+    display: inline;
+    float: right;
+    list-style: none;
+    background-color: rgb(21, 20, 20);
+    color: rgb(244, 249, 244);
+    padding-left: 4;
+}
+
+li {
+    margin: 1em;
 }
